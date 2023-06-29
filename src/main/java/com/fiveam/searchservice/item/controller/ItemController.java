@@ -2,6 +2,7 @@ package com.fiveam.searchservice.item.controller;
 
 import com.fiveam.searchservice.client.UserServiceClient;
 import com.fiveam.searchservice.item.dto.ItemDto;
+import com.fiveam.searchservice.item.dto.SalesQuantityDto;
 import com.fiveam.searchservice.item.entity.Item;
 import com.fiveam.searchservice.item.mapper.ItemMapper;
 import com.fiveam.searchservice.item.repository.ItemRepository;
@@ -65,6 +66,11 @@ public class ItemController {
         Item item = itemService.findItem(itemId);
         return new ResponseEntity(new SingleResponseDto<>(mapper.itemToItemDetailResponseDto(
                 item, reviewService, reviewMapper, talkService, userService, talkMapper, reviewPage-1, 5, talkPage-1, 5)), HttpStatus.OK);
+    }
+
+    @GetMapping("/items/{item-id}/check")
+    public ItemInfoResponseDto findVerifiedItem(@PathVariable("item-id") long itemId) {
+        return ItemInfoResponseDto.fromEntity(itemService.findVerifiedItem(itemId));
     }
 
     @PostMapping("/items/list")
@@ -142,13 +148,13 @@ public class ItemController {
     }
 
     @PostMapping("/items/{itemId}/sales")
-    public void plusSales(@PathVariable Long itemId, int quantity) {
-        itemService.plusSales(itemId, quantity);
+    public void plusSales(@PathVariable Long itemId, @RequestBody SalesQuantityDto salesQuantityDto) {
+        itemService.plusSales(itemId, salesQuantityDto.getQuantity());
     }
 
     @DeleteMapping("/items/{itemId}/sales")
-    public void minusSales(@PathVariable Long itemId, int quantity) {
-        itemService.minusSales(itemId, quantity);
+    public void minusSales(@PathVariable Long itemId, @RequestBody SalesQuantityDto salesQuantityDto) {
+        itemService.minusSales(itemId, salesQuantityDto.getQuantity());
     }
 }
 

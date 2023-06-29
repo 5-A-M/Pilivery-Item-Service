@@ -41,7 +41,7 @@ public class ItemDto {
     @Setter
     @NoArgsConstructor
     public static class ItemDetailResponse { // 아이템 상세 조회
-        private Long ItemId;
+        private Long itemId;
         private String thumbnail;
         private String descriptionImage;
         private String title;

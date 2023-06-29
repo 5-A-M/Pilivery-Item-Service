@@ -9,13 +9,12 @@ import com.fiveam.searchservice.wish.entity.Wish;
 import lombok.Builder;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Builder
-public class ItemInfoResponseDto implements Serializable {
+public class ItemInfoResponseDto {
 
     private Long itemId;
 
