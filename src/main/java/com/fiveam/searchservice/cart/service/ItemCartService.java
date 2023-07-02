@@ -18,6 +18,7 @@ import java.util.Optional;
 public class ItemCartService {
 
     private final ItemCartRepository itemCartRepository;
+
     public ItemCart addItemCart(ItemCart itemCart) {
         ItemCart findItemCart = checkItemCart(itemCart);
 
@@ -78,7 +79,10 @@ public class ItemCartService {
     }
 
     public List<ItemCart> findItemCarts(Cart cart, boolean subscription, boolean buyNow) { // 금액 합계, 주문
-        return itemCartRepository.findAllByCartAndSubscriptionAndBuyNow(cart, subscription, buyNow);
+        System.out.println("Cart: " + cart);
+        List<ItemCart> allByCartAndSubscriptionAndBuyNow = itemCartRepository.findAllByCartAndSubscriptionAndBuyNow(cart, subscription, buyNow);
+        System.out.println(allByCartAndSubscriptionAndBuyNow);
+        return allByCartAndSubscriptionAndBuyNow;
         // subscription - true 정기구독, false 일반
         // buyNow - true 체크박스 활성화, false 체크박스 비활성화
     }

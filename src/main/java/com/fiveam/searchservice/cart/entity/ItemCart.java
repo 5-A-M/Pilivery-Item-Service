@@ -13,6 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "ITEM_CART")
+@ToString
 public class ItemCart extends Auditable {
 
     @Id

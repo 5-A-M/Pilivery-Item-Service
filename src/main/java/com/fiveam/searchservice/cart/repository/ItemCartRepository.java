@@ -4,9 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.fiveam.searchservice.cart.entity.Cart;
 import com.fiveam.searchservice.cart.entity.ItemCart;
 import com.fiveam.searchservice.item.entity.Item;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface ItemCartRepository extends JpaRepository<ItemCart, Long> {
 
     ItemCart findByCartAndItemAndSubscription(Cart cart, Item item, boolean subscription);

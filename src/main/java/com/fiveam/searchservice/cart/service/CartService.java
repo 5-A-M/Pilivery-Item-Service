@@ -49,7 +49,7 @@ public class CartService {
     }
 
     public Cart findVerifiedCart(long cartId) {
-        Optional<Cart> optionalCart = cartRepository.findById(cartId);
+        Optional<Cart> optionalCart = cartRepository.findByCartId(cartId);
         Cart findCart = optionalCart.orElseThrow(
                 () -> new BusinessLogicException(ExceptionCode.CART_NOT_FOUND));
         return findCart;

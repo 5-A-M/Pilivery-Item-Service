@@ -18,6 +18,7 @@ public class ItemCartInfoResponseDto {
     private boolean buyNow;
     private boolean subscription;
     private ItemSimpleResponseDto item;
+    private Long itemId;;
     private String createdAt;
     private String updatedAt;
 
@@ -31,6 +32,7 @@ public class ItemCartInfoResponseDto {
                 .item(ItemSimpleResponseDto.fromItemInfoResponse(
                         ItemInfoResponseDto.fromEntity(itemcart.getItem())
                 ))
+                .itemId(itemcart.getItem().getItemId())
                 .createdAt(itemcart.getCreatedAt().toString())
                 .updatedAt(itemcart.getUpdatedAt().toString())
                 .build();

@@ -31,6 +31,7 @@ public class ItemService {
     public Item findItem(long itemId) {
         Item item = findVerifiedItem(itemId);
         item.setView(item.getView()+1);
+        log.info("Find Item: " + item);
         return itemRepository.save(item);
     }
 
